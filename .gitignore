@@ -1,0 +1,6 @@
+RobotWars.Core/bin/*
+RobotWars.Tests/bin/*
+RobotWars.Core/obj/*
+RobotWars.Tests/obj/*
+RobotWars/bin/*
+RobotWars/obj/*
