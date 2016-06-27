@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWars", "RobotWars\RobotWars.csproj", "{17D112E8-93F4-4D2C-A7EE-6C0F6160F08A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWars.Core", "RobotWars.Core\RobotWars.Core.csproj", "{032F76FF-DE53-49D9-9C74-41ADD93A24C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWars.Tests", "RobotWars.Tests\RobotWars.Tests.csproj", "{AFA4F0D9-8573-420D-8A99-BBE82BE97E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWars.Core.Tests", "RobotWars.Core.Tests\RobotWars.Core.Tests.csproj", "{16FC11CC-2498-4A02-A400-8D63D9F20F39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17D112E8-93F4-4D2C-A7EE-6C0F6160F08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D112E8-93F4-4D2C-A7EE-6C0F6160F08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D112E8-93F4-4D2C-A7EE-6C0F6160F08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D112E8-93F4-4D2C-A7EE-6C0F6160F08A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032F76FF-DE53-49D9-9C74-41ADD93A24C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032F76FF-DE53-49D9-9C74-41ADD93A24C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032F76FF-DE53-49D9-9C74-41ADD93A24C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032F76FF-DE53-49D9-9C74-41ADD93A24C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA4F0D9-8573-420D-8A99-BBE82BE97E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA4F0D9-8573-420D-8A99-BBE82BE97E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA4F0D9-8573-420D-8A99-BBE82BE97E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA4F0D9-8573-420D-8A99-BBE82BE97E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FC11CC-2498-4A02-A400-8D63D9F20F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FC11CC-2498-4A02-A400-8D63D9F20F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FC11CC-2498-4A02-A400-8D63D9F20F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FC11CC-2498-4A02-A400-8D63D9F20F39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

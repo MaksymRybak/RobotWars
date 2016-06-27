@@ -4,3 +4,6 @@ RobotWars.Core/obj/*
 RobotWars.Tests/obj/*
 RobotWars/bin/*
 RobotWars/obj/*
+packages/*
+RobotWars.Core.Tests/bin/*
+RobotWars.Core.Tests/obj/*
