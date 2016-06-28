@@ -45,9 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompetitionBootstrap.cs" />
+    <Compile Include="DTO\InputArenaUpperRightCoordsDTO.cs" />
+    <Compile Include="DTO\InputCompetitionDataDTO.cs" />
+    <Compile Include="DTO\InputRobotDTO.cs" />
     <Compile Include="GameConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobotWarsCompetition.cs" />
+    <Compile Include="System\ConsoleWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
