@@ -6,6 +6,7 @@ using RobotWars.Core.Models.Interfaces;
 
 namespace RobotWars.Core.Tests
 {
+    [TestFixture]
     public class NavigationSystemTests
     {
         private INavigationSystem navigationSystem;

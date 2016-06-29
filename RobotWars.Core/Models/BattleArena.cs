@@ -39,10 +39,10 @@ namespace RobotWars.Core.Models
 
         public void PrintRobotsPositions()
         {
-            _console.WriteLine(">>> Competition result ");
+            _console.WriteLine(">>> Competition result");
             if (_robots != null && _robots.Count > 0)
             {
-                _console.WriteLine(">>> Robots positions: ");
+                _console.WriteLine(">>> Robots positions:");
                 _robots.ToList().ForEach(robot => _console.WriteLine(">>> Robot # {0}: {1} {2} {3}", robot.Id, robot.Position.Location.X, 
                     robot.Position.Location.Y, robot.Position.Heading));                
             }
