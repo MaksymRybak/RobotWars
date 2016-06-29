@@ -62,8 +62,7 @@ namespace RobotWars
             var inputData = new InputCompetitionDataDTO();
 
             var defaultArenaBottomLeftCoords = "0 0";
-            if (!inputData.ArenaBottomLeftCoords.TryParseInputCoords(defaultArenaBottomLeftCoords))
-                throw new Exception("Error reading bottom-left coordinates. Please try again.");
+            inputData.ArenaBottomLeftCoords.TryParseInputCoords(defaultArenaBottomLeftCoords);
 
             console.Write(">>> Enter upper-right coordinates of the arena in the format [X Y] (e.g: 5 5): ");
             if (!inputData.ArenaUpperRightCoords.TryParseInputCoords(console.ReadArenaUpperRightCoords()))
