@@ -29,6 +29,16 @@ namespace RobotWars.Mappers
                 {
                     // TODO: log
                 }
+
+                int y = 0;
+                if (int.TryParse(arenaCoordinatesDTO.Y, out y))
+                {
+                    arenaCoordinates.Y = y;
+                }
+                else
+                {
+                    // TODO: log
+                }
             }
 
             return arenaCoordinates;

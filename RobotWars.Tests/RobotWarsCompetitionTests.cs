@@ -1,8 +1,8 @@
 ﻿using LightInject;
 using Moq;
 using NUnit.Framework;
+using RobotWars.Core.System;
 using RobotWars.DTO;
-using RobotWars.System;
 
 namespace RobotWars.Tests
 {

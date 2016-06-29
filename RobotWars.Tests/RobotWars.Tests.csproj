@@ -56,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RobotWars.Core\RobotWars.Core.csproj">
+      <Project>{032f76ff-de53-49d9-9c74-41add93a24c8}</Project>
+      <Name>RobotWars.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RobotWars\RobotWars.csproj">
       <Project>{17d112e8-93f4-4d2c-a7ee-6c0f6160f08a}</Project>
       <Name>RobotWars</Name>

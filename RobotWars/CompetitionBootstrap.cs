@@ -1,5 +1,6 @@
 ﻿using RobotWars.Core.Factories.Interfaces;
 using RobotWars.Core.Models.Interfaces;
+using RobotWars.Core.System;
 using RobotWars.DTO;
 
 namespace RobotWars
@@ -17,9 +18,9 @@ namespace RobotWars
         private readonly GameConsole _gameConsole;
 
 
-        public CompetitionBootstrap(IBattleArena battleArena, INavigationSystem navigationSystem, IRobotFactory robotFactory, IArenaFactory arenaFactory)
+        public CompetitionBootstrap(IBattleArena battleArena, INavigationSystem navigationSystem, IRobotFactory robotFactory, IArenaFactory arenaFactory, IConsoleWrapper console)
         {
-            _gameConsole = new GameConsole(battleArena, navigationSystem, robotFactory, arenaFactory);
+            _gameConsole = new GameConsole(battleArena, navigationSystem, robotFactory, arenaFactory, console);
         }
 
         public void Start(InputCompetitionDataDTO competitionData)

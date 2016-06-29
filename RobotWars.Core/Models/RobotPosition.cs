@@ -6,6 +6,6 @@ namespace RobotWars.Core.Models
     public class RobotPosition : IRobotPosition
     {
         public IArenaCoordinates Location { get; set; }
-        public HeadingDirection Heading { get; set; }
+        public CompassPoint Heading { get; set; }
     }
 }

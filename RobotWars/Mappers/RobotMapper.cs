@@ -32,7 +32,7 @@ namespace RobotWars.Mappers
                 robot.Id = robotDTO.Id;
 
                 robot.Position.Location = _arenaMapper.FromArenaCoordinatesDTOToArenaCoordinates(robotDTO.StartLocation);
-                HeadingDirection hd;
+                CompassPoint hd;
                 if (Enum.TryParse(robotDTO.StartHeadingDirection, out hd))
                 {
                     robot.Position.Heading = hd;

@@ -7,6 +7,10 @@ namespace RobotWars.Core.Models.Interfaces
     {
         int Id { get; set; }
         IRobotPosition Position { get; set; }
+        IBattleArena BattleArena { get; set; }
         IList<RobotMove> BattleMoves { get; set; }
+
+        void PerformBattleMove(RobotMove move);
+        void UpdateLocationAfterForwardMove();
     }
 }
