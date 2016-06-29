@@ -29,20 +29,28 @@ namespace RobotWars.Core.Tests
             robot = null;
         }
 
-        [Test]
-        public void Should_perform_battle_move_spin_to_left()
+        [TestCase(CompassPoint.N, CompassPoint.W)]
+        [TestCase(CompassPoint.E, CompassPoint.N)]
+        [TestCase(CompassPoint.S, CompassPoint.E)]
+        [TestCase(CompassPoint.W, CompassPoint.S)]
+        public void Should_perform_battle_move_spin_to_left(CompassPoint oldHeading, CompassPoint newHeading)
         {
+            robot.Position.Heading = oldHeading;
             robot.PerformBattleMove(RobotMove.L);
-            robot.Position.Heading.Should().Be.EqualTo(CompassPoint.W);
+            robot.Position.Heading.Should().Be.EqualTo(newHeading);
             robot.Position.Location.X.Should().Be.EqualTo(1);
             robot.Position.Location.Y.Should().Be.EqualTo(2);
         }
 
-        [Test]
-        public void Should_perform_battle_move_spin_to_right()
+        [TestCase(CompassPoint.N, CompassPoint.E)]
+        [TestCase(CompassPoint.E, CompassPoint.S)]
+        [TestCase(CompassPoint.S, CompassPoint.W)]
+        [TestCase(CompassPoint.W, CompassPoint.N)]
+        public void Should_perform_battle_move_spin_to_right(CompassPoint oldHeading, CompassPoint newHeading)
         {
+            robot.Position.Heading = oldHeading;
             robot.PerformBattleMove(RobotMove.R);
-            robot.Position.Heading.Should().Be.EqualTo(CompassPoint.E);
+            robot.Position.Heading.Should().Be.EqualTo(newHeading);
             robot.Position.Location.X.Should().Be.EqualTo(1);
             robot.Position.Location.Y.Should().Be.EqualTo(2);
         }
