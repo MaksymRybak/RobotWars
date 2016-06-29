@@ -4,12 +4,14 @@ namespace RobotWars.DTO
 {
     public class InputCompetitionDataDTO
     {
-        public InputArenaUpperRightCoordsDTO ArenaUpperRightCoords { get; set; }
+        public ArenaCoordinatesDTO ArenaBottomLeftCoords { get; set; }
+        public ArenaCoordinatesDTO ArenaUpperRightCoords { get; set; }
         public List<InputRobotDTO> RobotsToDeploy { get; set; }
 
         public InputCompetitionDataDTO()
         {
-            ArenaUpperRightCoords = new InputArenaUpperRightCoordsDTO();
+            ArenaBottomLeftCoords = new ArenaCoordinatesDTO();
+            ArenaUpperRightCoords = new ArenaCoordinatesDTO();
             RobotsToDeploy = new List<InputRobotDTO>();
         }
     }

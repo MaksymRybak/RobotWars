@@ -45,10 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompetitionBootstrap.cs" />
-    <Compile Include="DTO\InputArenaUpperRightCoordsDTO.cs" />
+    <Compile Include="DTO\ArenaCoordinatesDTO.cs" />
     <Compile Include="DTO\InputCompetitionDataDTO.cs" />
     <Compile Include="DTO\InputRobotDTO.cs" />
     <Compile Include="GameConsole.cs" />
+    <Compile Include="Mappers\ArenaMapper.cs" />
+    <Compile Include="Mappers\RobotMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobotWarsCompetition.cs" />
     <Compile Include="System\ConsoleWrapper.cs" />

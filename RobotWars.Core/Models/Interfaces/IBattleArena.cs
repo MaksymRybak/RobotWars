@@ -2,6 +2,6 @@
 {
     public interface IBattleArena
     {
-        void SetUpArena(ArenaCoordinates bottomLeftCoordinates, ArenaCoordinates upperRightCoordinates);
+        void SetUpArena(IArenaCoordinates bottomLeftCoordinates, IArenaCoordinates upperRightCoordinates);
     }
 }

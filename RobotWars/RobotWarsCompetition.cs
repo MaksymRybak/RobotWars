@@ -1,5 +1,7 @@
 ﻿using System;
 using LightInject;
+using RobotWars.Core.Factories;
+using RobotWars.Core.Factories.Interfaces;
 using RobotWars.Core.Models;
 using RobotWars.Core.Models.Interfaces;
 using RobotWars.DTO;
@@ -16,7 +18,15 @@ namespace RobotWars
             serviceContainer = new ServiceContainer();
             serviceContainer.Register<IConsoleWrapper, ConsoleWrapper>();
             serviceContainer.Register<ICompetitionBootstrap, CompetitionBootstrap>();
+            
+            // Factories
+            serviceContainer.Register<IRobotFactory, RobotFactory>();
+            serviceContainer.Register<IArenaFactory, ArenaFactory>();
+
+            // Models (aka BOs)
             serviceContainer.Register<IBattleArena, BattleArena>();
+            serviceContainer.Register<IRobot, Robot>();
+            serviceContainer.Register<INavigationSystem, NavigationSystem>();
         }
 
         public static void Main(string[] args)
@@ -46,6 +56,10 @@ namespace RobotWars
             var console = serviceContainer.GetInstance<IConsoleWrapper>();
             var inputData = new InputCompetitionDataDTO();
 
+            var defaultArenaBottomLeftCoords = "0 0";
+            if (!inputData.ArenaBottomLeftCoords.TryParseInputCoords(defaultArenaBottomLeftCoords))
+                throw new Exception("Error reading bottom-left coordinates. Please try again.");
+
             console.Write(">>> Enter upper-right coordinates of the arena in the format [X Y] (e.g: 5 5): ");
             if (!inputData.ArenaUpperRightCoords.TryParseInputCoords(console.ReadArenaUpperRightCoords()))
                 throw new Exception("Error reading upper-right coordinates. Please try again.");
@@ -54,7 +68,7 @@ namespace RobotWars
             bool enterNextRobotToDeploy = true;
             while (enterNextRobotToDeploy)
             {
-                var robotToDeploy = new InputRobotDTO();
+                var robotToDeploy = new InputRobotDTO { Id = robotIx };
 
                 console.WriteLine(">>> Enter robot # {0} configuration", robotIx);
                 console.Write(">>> robot's position and orientation in the format [X Y Orientation:[N,S,E,W]] (e.g: 1 2 N): ");

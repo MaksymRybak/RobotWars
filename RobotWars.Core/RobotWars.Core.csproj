@@ -41,19 +41,23 @@
   <ItemGroup>
     <Compile Include="Enums\HeadingDirection.cs" />
     <Compile Include="Enums\RobotMove.cs" />
+    <Compile Include="Factories\ArenaFactory.cs" />
+    <Compile Include="Factories\Interfaces\IArenaFactory.cs" />
+    <Compile Include="Factories\Interfaces\IRobotFactory.cs" />
+    <Compile Include="Factories\RobotFactory.cs" />
     <Compile Include="Models\ArenaCoordinates.cs" />
     <Compile Include="Models\BattleArena.cs" />
+    <Compile Include="Models\Interfaces\IArenaCoordinates.cs" />
     <Compile Include="Models\Interfaces\IBattleArena.cs" />
     <Compile Include="Models\Interfaces\INavigationSystem.cs" />
     <Compile Include="Models\Interfaces\IRobot.cs" />
+    <Compile Include="Models\Interfaces\IRobotPosition.cs" />
     <Compile Include="Models\NavigationSystem.cs" />
     <Compile Include="Models\Robot.cs" />
     <Compile Include="Models\RobotPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

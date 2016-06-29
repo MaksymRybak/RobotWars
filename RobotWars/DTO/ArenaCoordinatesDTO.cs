@@ -2,7 +2,7 @@
 
 namespace RobotWars.DTO
 {
-    public class InputArenaUpperRightCoordsDTO
+    public class ArenaCoordinatesDTO
     {
         public string X { get; set; }
         public string Y { get; set; }

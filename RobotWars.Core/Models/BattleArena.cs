@@ -4,13 +4,13 @@ namespace RobotWars.Core.Models
 {
     public class BattleArena : IBattleArena
     {
-        public ArenaCoordinates BottomLeftCoordinates { get; set; }
-        public ArenaCoordinates UpperRightCoordinates { get; set; }
+        public IArenaCoordinates BottomLeftCoordinates { get; set; }
+        public IArenaCoordinates UpperRightCoordinates { get; set; }
 
-
-        public void SetUpArena(ArenaCoordinates bottomLeftCoordinates, ArenaCoordinates upperRightCoordinates)
+        public void SetUpArena(IArenaCoordinates bottomLeftCoordinates, IArenaCoordinates upperRightCoordinates)
         {
-            throw new System.NotImplementedException();
+            BottomLeftCoordinates = bottomLeftCoordinates;
+            UpperRightCoordinates = upperRightCoordinates;
         }
     }
 }

@@ -56,7 +56,7 @@ namespace RobotWars.Tests
 
         [TestCase("1 2", "wrong heading")]
         [TestCase("wrongposition", "N")]
-        public void Should_not_bootstrap_competition_if_robot_positin_or_heading_are_wrong(string robotPosition, string robotHeading)
+        public void Should_not_bootstrap_competition_if_robot_position_or_heading_are_wrong(string robotPosition, string robotHeading)
         {
             _consoleWrapperMock.Setup(m => m.ReadArenaUpperRightCoords()).Returns("5 5");
             _consoleWrapperMock.Setup(m => m.ReadRobotLocationAndHeadingDirection()).Returns(string.Format("{0} {1}", robotPosition, robotHeading));
