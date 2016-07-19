@@ -19,7 +19,7 @@ namespace RobotWars
         static RobotWarsCompetition()
         {
             //XmlConfigurator.Configure(new MemoryStream(Encoding.UTF8.GetBytes(configHelper.GetLog4NetConfig())));
-            var result = XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
+            XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
             GlobalContext.Properties["log4japp"] = "RobotWars";
             GlobalContext.Properties["UserName"] = Environment.UserName;
 
