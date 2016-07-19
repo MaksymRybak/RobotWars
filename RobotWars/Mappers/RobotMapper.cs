@@ -10,14 +10,12 @@ namespace RobotWars.Mappers
     public class RobotMapper
     {
         private readonly IRobotFactory _robotFactory;
-        private readonly IArenaFactory _arenaFactory;
 
         private readonly ArenaMapper _arenaMapper;
 
         public RobotMapper(IRobotFactory robotFactory, IArenaFactory arenaFactory)
         {
             _robotFactory = robotFactory;
-            _arenaFactory = arenaFactory;
 
             _arenaMapper = new ArenaMapper(arenaFactory);
         }
@@ -39,7 +37,7 @@ namespace RobotWars.Mappers
                 }
                 else
                 {
-                    // TODO: log
+                    throw new Exception("Cannot parse robot's start heading direction");
                 }
 
                 if (robotDTO.BattleMoves != null && robotDTO.BattleMoves.Count > 0)
@@ -53,7 +51,7 @@ namespace RobotWars.Mappers
                         }
                         else
                         {
-                            // TODO: log
+                            throw new Exception("Cannot parse robot's battle move");
                         }
                     });
                 }
