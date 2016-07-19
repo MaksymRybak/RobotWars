@@ -18,7 +18,7 @@ namespace RobotWars.DTO
             BattleMoves = new List<string>();
         }
 
-        public bool TryParseInputLocationAndHeadingDirection(string inputLocationAndHeading)
+        public void TryParseInputLocationAndHeadingDirection(string inputLocationAndHeading)
         {
             try
             {
@@ -29,28 +29,22 @@ namespace RobotWars.DTO
                 StartLocation.Y = startYAndHeading.Substring(0, nextSpaceDelimiterPos);
                 StartHeadingDirection = startYAndHeading.Substring(nextSpaceDelimiterPos + 1, startYAndHeading.Length - StartLocation.Y.Length - 1);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                // TODO: log
-                return false;   
+                throw new Exception("Error reading robot's position and orientation.", ex);
             }
-
-            return true;
         }
 
-        public bool TryParseInputBattleMoves(string inputBattleMoves)
+        public void TryParseInputBattleMoves(string inputBattleMoves)
         {
             try
             {
                 inputBattleMoves.ToArray().ToList().ForEach(m => BattleMoves.Add(m.ToString()));
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                // TODO: log
-                return false;
+                throw new Exception("Error reading robot's battle moves. Please try again.", ex);
             }
-
-            return true;
         }
     }
 }

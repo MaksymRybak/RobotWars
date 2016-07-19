@@ -3,6 +3,7 @@ using System.Linq;
 using RobotWars.Core.Factories.Interfaces;
 using RobotWars.Core.Models.Interfaces;
 using RobotWars.Core.System;
+using RobotWars.Core.System.Logging;
 using RobotWars.DTO;
 using RobotWars.Mappers;
 
@@ -18,16 +19,18 @@ namespace RobotWars
         private readonly IBattleArena _battleArena;
         private readonly INavigationSystem _navigationSystem;
         private readonly IConsoleWrapper _console;
+        private readonly ILogWriter _logWriter;
         private IList<IRobot> _robots;
 
         private readonly RobotMapper _robotMapper;
         private readonly ArenaMapper _arenaMapper;
 
-        public GameConsole(IBattleArena battleArena, INavigationSystem navigationSystem, IRobotFactory robotFactory, IArenaFactory arenaFactory, IConsoleWrapper console)
+        public GameConsole(IBattleArena battleArena, INavigationSystem navigationSystem, IRobotFactory robotFactory, IArenaFactory arenaFactory, IConsoleWrapper console, ILogWriter logWriter)
         {
             _battleArena = battleArena;
             _navigationSystem = navigationSystem;
             _console = console;
+            _logWriter = logWriter;
 
             _robotMapper = new RobotMapper(robotFactory, arenaFactory);
             _arenaMapper = new ArenaMapper(arenaFactory);
@@ -58,7 +61,7 @@ namespace RobotWars
             }
             else
             {
-                // TODO: log
+                _logWriter.LogInfoFormat("Cannot start competition, system is not ready");
             }
         }        
 
