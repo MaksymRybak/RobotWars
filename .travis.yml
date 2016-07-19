@@ -2,7 +2,7 @@ language: csharp
 solution: RobotWars.sln
 install:
   - nuget restore RobotWars.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - nuget install NUnit.Runners -Version 3.4.1 -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Release RobotWars.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./RobotWars.Tests/bin/Release/RobotWars.Tests.dll
+  - mono ./testrunner/NUnit.Runners.3.4.1/tools/nunit-console.exe ./RobotWars.Tests/bin/Release/RobotWars.Tests.dll
