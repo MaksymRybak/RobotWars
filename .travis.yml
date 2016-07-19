@@ -6,3 +6,4 @@ install:
 script:
   - xbuild /p:Configuration=Release RobotWars.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./RobotWars.Tests/bin/Release/RobotWars.Tests.dll
+  - mono ./testrunner/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./RobotWars.Core.Tests/bin/Release/RobotWars.Core.Tests.dll
