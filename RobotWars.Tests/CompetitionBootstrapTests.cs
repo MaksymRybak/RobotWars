@@ -1,16 +1,22 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
+using RobotWars.Core.System.Logging;
 
 namespace RobotWars.Tests
 {
     [TestFixture]
     public class CompetitionBootstrapTests
     {
+        private Mock<ILogWriter> logWriterMock;
+
         private CompetitionBootstrap competitionBootstrap;
 
         [SetUp]
         public void SetUp()
         {
-            competitionBootstrap = new CompetitionBootstrap(null, null, null, null, null);
+            logWriterMock = new Mock<ILogWriter>();
+
+            competitionBootstrap = new CompetitionBootstrap(null, null, null, null, null, logWriterMock.Object);
         }
 
         [TearDown]

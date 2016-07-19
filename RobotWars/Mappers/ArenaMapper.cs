@@ -1,4 +1,5 @@
-﻿using RobotWars.Core.Factories.Interfaces;
+﻿using System;
+using RobotWars.Core.Factories.Interfaces;
 using RobotWars.Core.Models.Interfaces;
 using RobotWars.DTO;
 
@@ -27,7 +28,7 @@ namespace RobotWars.Mappers
                 }
                 else
                 {
-                    // TODO: log
+                    throw new Exception("Cannot parse coordinate X");
                 }
 
                 int y = 0;
@@ -37,7 +38,7 @@ namespace RobotWars.Mappers
                 }
                 else
                 {
-                    // TODO: log
+                    throw new Exception("Cannot parse coordinate Y");
                 }
             }
 

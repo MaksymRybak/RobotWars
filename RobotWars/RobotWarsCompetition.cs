@@ -1,10 +1,13 @@
 ﻿using System;
+using log4net;
+using log4net.Config;
 using LightInject;
 using RobotWars.Core.Factories;
 using RobotWars.Core.Factories.Interfaces;
 using RobotWars.Core.Models;
 using RobotWars.Core.Models.Interfaces;
 using RobotWars.Core.System;
+using RobotWars.Core.System.Logging;
 using RobotWars.DTO;
 
 namespace RobotWars
@@ -15,11 +18,19 @@ namespace RobotWars
 
         static RobotWarsCompetition()
         {
+            //XmlConfigurator.Configure(new MemoryStream(Encoding.UTF8.GetBytes(configHelper.GetLog4NetConfig())));
+            var result = XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
+            GlobalContext.Properties["log4japp"] = "RobotWars";
+            GlobalContext.Properties["UserName"] = Environment.UserName;
+
             serviceContainer = new ServiceContainer();
             serviceContainer.Register(s => serviceContainer);
             serviceContainer.Register<IConsoleWrapper, ConsoleWrapper>();
             serviceContainer.Register<ICompetitionBootstrap, CompetitionBootstrap>();
             
+            // System
+            serviceContainer.Register<ILogWriter, LogWriter>();
+
             // Factories
             serviceContainer.Register<IFactory, Factory>();
             serviceContainer.Register<IRobotFactory, RobotFactory>();
@@ -36,6 +47,7 @@ namespace RobotWars
 
         public static void Main(string[] args)
         {
+            var logWriter = serviceContainer.GetInstance<ILogWriter>();
             var console = serviceContainer.GetInstance<IConsoleWrapper>();
 
             InputCompetitionDataDTO competitionData = null;
@@ -46,6 +58,7 @@ namespace RobotWars
             catch (Exception e)
             {
                 console.WriteLine("Error in input data: {0}", e.Message);
+                logWriter.LogError("Error reading input data", e);
                 return;
             }
 
@@ -65,8 +78,7 @@ namespace RobotWars
             inputData.ArenaBottomLeftCoords.TryParseInputCoords(defaultArenaBottomLeftCoords);
 
             console.Write(">>> Enter upper-right coordinates of the arena in the format [X Y] (e.g: 5 5): ");
-            if (!inputData.ArenaUpperRightCoords.TryParseInputCoords(console.ReadArenaUpperRightCoords()))
-                throw new Exception("Error reading upper-right coordinates. Please try again.");
+            inputData.ArenaUpperRightCoords.TryParseInputCoords(console.ReadArenaUpperRightCoords());
 
             int robotIx = 1;
             bool enterNextRobotToDeploy = true;
@@ -76,12 +88,10 @@ namespace RobotWars
 
                 console.WriteLine(">>> Enter robot # {0} configuration", robotIx);
                 console.Write(">>> robot's position and orientation in the format [X Y Orientation:[N,S,E,W]] (e.g: 1 2 N): ");
-                if (!robotToDeploy.TryParseInputLocationAndHeadingDirection(console.ReadRobotLocationAndHeadingDirection()))
-                    throw new Exception("Error reading robot's position and orientation. Please try again.");
+                robotToDeploy.TryParseInputLocationAndHeadingDirection(console.ReadRobotLocationAndHeadingDirection());
 
                 console.Write(">>> robot's battle moves in the format [M1M2...Mn, where Mn:[L,R,M]] (e.g: LMLMLM): ");
-                if (!robotToDeploy.TryParseInputBattleMoves(console.ReadRobotBattleMoves()))
-                    throw new Exception("Error reading robot's battle moves. Please try again.");
+                robotToDeploy.TryParseInputBattleMoves(console.ReadRobotBattleMoves());
 
                 console.Write("Enter next robot to deploy [Y/N]?: ");
                 var proceed = console.ReadLine();
