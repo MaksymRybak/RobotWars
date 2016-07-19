@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using RobotWars.Core.Enums;
@@ -7,6 +6,7 @@ using RobotWars.Core.Factories.Interfaces;
 using RobotWars.Core.Models;
 using RobotWars.Core.Models.Interfaces;
 using RobotWars.Core.System;
+using RobotWars.Core.System.Logging;
 using RobotWars.DTO;
 
 namespace RobotWars.Tests
@@ -20,6 +20,7 @@ namespace RobotWars.Tests
         private Mock<IConsoleWrapper> consoleMock;
         private Mock<IRobotFactory> robotFactoryMock;
         private Mock<IArenaFactory> arenaFactoryMock;
+        private Mock<ILogWriter> logWriterMock;
 
         [SetUp]
         public void SetUp()
@@ -29,8 +30,9 @@ namespace RobotWars.Tests
             consoleMock = new Mock<IConsoleWrapper>();
             robotFactoryMock = new Mock<IRobotFactory>();
             arenaFactoryMock = new Mock<IArenaFactory>();
+            logWriterMock = new Mock<ILogWriter>();
 
-            gameConsole = new GameConsole(battleArenaMock.Object, navigationSystemMock.Object, robotFactoryMock.Object, arenaFactoryMock.Object, consoleMock.Object);
+            gameConsole = new GameConsole(battleArenaMock.Object, navigationSystemMock.Object, robotFactoryMock.Object, arenaFactoryMock.Object, consoleMock.Object, logWriterMock.Object);
         }
 
         [TearDown]
@@ -42,7 +44,13 @@ namespace RobotWars.Tests
         [Test]
         public void Should_setup_competition()
         {
-            var competitionData = new InputCompetitionDataDTO();
+            var competitionData = new InputCompetitionDataDTO
+            {
+                ArenaBottomLeftCoords = new ArenaCoordinatesDTO {X = "0", Y = "0"},
+                ArenaUpperRightCoords = new ArenaCoordinatesDTO { X = "5", Y = "5" }
+            };
+            arenaFactoryMock.Setup(m => m.GetArenaCoordinates()).Returns(new ArenaCoordinates());
+
             gameConsole.SetUpCompetition(competitionData);
 
             battleArenaMock.Verify(a => a.SetUpArena(It.IsAny<IArenaCoordinates>(), It.IsAny<IArenaCoordinates>()), Times.Once);
@@ -55,6 +63,8 @@ namespace RobotWars.Tests
         {
             var competitionData = new InputCompetitionDataDTO
             {
+                ArenaBottomLeftCoords = new ArenaCoordinatesDTO {X = "0", Y = "0"},
+                ArenaUpperRightCoords = new ArenaCoordinatesDTO { X = "5", Y = "5" },
                 RobotsToDeploy = new List<InputRobotDTO> { new InputRobotDTO
                 {
                     Id = 1,

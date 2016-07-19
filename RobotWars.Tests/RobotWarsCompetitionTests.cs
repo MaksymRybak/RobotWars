@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using RobotWars.Core.System;
+using RobotWars.Core.System.Logging;
 using RobotWars.DTO;
 
 namespace RobotWars.Tests
@@ -10,8 +11,10 @@ namespace RobotWars.Tests
     public class RobotWarsCompetitionTests
     {
         private ServiceContainer _serviceContainer;
+
         private Mock<IConsoleWrapper> _consoleWrapperMock;
         private Mock<ICompetitionBootstrap> _competitionBootstrapMock;
+        private Mock<ILogWriter> _logWriterMock;
 
         [SetUp]
         public void SetUp()
@@ -20,8 +23,11 @@ namespace RobotWars.Tests
 
             _competitionBootstrapMock = new Mock<ICompetitionBootstrap>();
             _consoleWrapperMock = new Mock<IConsoleWrapper>();
+            _logWriterMock = new Mock<ILogWriter>();
+
             _serviceContainer.Register(m => _competitionBootstrapMock.Object);
             _serviceContainer.Register(m => _consoleWrapperMock.Object);
+            _serviceContainer.Register(m => _logWriterMock.Object);
         }
 
         [TearDown]
