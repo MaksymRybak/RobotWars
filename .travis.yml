@@ -14,7 +14,7 @@ install:
   - ./configure
   - make
   - sudo make install
-  - cd ../../RobotWars  
+  - cd ../../../RobotWars  
 script:
   - xbuild /p:Configuration=Release RobotWars.sln
   - export LD_LIBRARY_PATH=/usr/local/lib
