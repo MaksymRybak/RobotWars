@@ -18,9 +18,9 @@ install:
 script:
   - xbuild /p:Configuration=Release RobotWars.sln
   - export LD_LIBRARY_PATH=/usr/local/lib
-  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+RobotWars ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe --process=Single ./RobotWars.Tests/bin/Release/RobotWars.Tests.dll
-  - monocov --export-xml=monocovCoverage monocovCoverage.cov
-  - cat monocovCoverage.cov
+  - mono --debug --profile=monocov:outfile=monocovCoverage.xml,+RobotWars ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe --process=Single ./RobotWars.Tests/bin/Release/RobotWars.Tests.dll
+  - monocov --export-xml=monocovCoverage monocovCoverage.xml
+  - cat monocovCoverage.xml
   - ls monocovCoverage
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
@@ -31,4 +31,4 @@ script:
   - echo $REPO_COMMIT_AUTHOR_EMAIL
   - echo $REPO_COMMIT_MESSAGE
   - echo $TRAVIS_JOB_ID
-  - mono ./packages/coveralls.net.0.6.0/tools/csmacnz.Coveralls.exe --monocov -i ./monocovCoverage --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID  --serviceName travis-ci  --useRelativePaths
+  - mono ./packages/coveralls.net.0.6.0/tools/csmacnz.Coveralls.exe --monocov -i ./monocovCoverage.xml --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID  --serviceName travis-ci  --useRelativePaths
