@@ -6,15 +6,23 @@ install:
   - curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
   - curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
   - unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
+  - pwd
+  - ls
   - cp /tmp/cecil/lib/net40/Mono.Cecil.dll .
   - cp /tmp/cecil/lib/net40/Mono.Cecil.dll /tmp/cecil/
   - git clone --depth=50 git://github.com/csMACnz/monocov.git ../../MaksymRybak/monocov
+  - pwd
+  - ls
   - cd ../../MaksymRybak/monocov
+  - pwd
+  - ls
   - cp /tmp/cecil/Mono.Cecil.dll .
   - ./configure
   - make
   - sudo make install
   - cd ../../MaksymRybak/RobotWars
+  - pwd
+  - ls
 script:
   - xbuild /p:Configuration=Release RobotWars.sln
   - export LD_LIBRARY_PATH=/usr/local/lib
